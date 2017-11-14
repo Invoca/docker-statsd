@@ -3,7 +3,7 @@
 def docker = new io.invoca.Docker()
 
 pipeline {
-    agent 'docker'
+    agent { label 'docker' }
     stages {
         stage('Setup') {
             steps {
