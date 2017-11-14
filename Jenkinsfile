@@ -10,7 +10,7 @@ pipeline {
                 script {
                     imageArgs = [
                         dockerfile: '.',
-                        image_name: 'invocaops/docker-statsd',
+                        image_name: 'invocaops/statsd',
                     ]
                 }
             }
