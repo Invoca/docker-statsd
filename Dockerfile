@@ -7,6 +7,8 @@ RUN wget -O /tmp/statsd.tgz https://github.com/etsy/statsd/archive/${VERSION}.ta
     && mkdir /usr/local/src/statsd \
     && tar -zxvf /tmp/statsd.tgz --strip 1 -C /usr/local/src/statsd \
     && rm /tmp/statsd.tgz \
+    && cd /usr/local/src/statsd \
+    && npm install \
     && cp -v /usr/local/src/statsd/exampleConfig.js /etc/default/config.js \
     && sed -i 's/graphite.example.com/graphite/' /etc/default/config.js
 
