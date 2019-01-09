@@ -5,7 +5,9 @@
   graphiteHost: "graphite.example.com",
   port: 8125,
   backends: [ "./backends/graphite" ],
-  dumpMessages: false,
-  deleteSets: true,
-  timer_metrics_filters: ['count_percent', 'lower_percent', 'std', 'sum', 'sum_percent', 'sum_squares', 'sum_squares_percent']
+  percentThreshold: [ 90, 99],
+  deleteCounters: true,
+  deleteSet: true,
+  deleteTimers: true,
+  calculated_timer_metrics: ['count', 'lower', 'mean', 'mean_percent', 'median', 'upper', 'upper_percent']
 }
