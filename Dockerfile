@@ -1,7 +1,6 @@
 # Dockerfile for statsd
 
 FROM node:6
-COPY config.js /etc/default/config.js
 ENV VERSION=v0.8.0
 RUN wget -O /tmp/statsd.tgz https://github.com/Invoca/statsd/archive/${VERSION}.tar.gz \
     && mkdir /usr/local/src/statsd \
@@ -9,6 +8,7 @@ RUN wget -O /tmp/statsd.tgz https://github.com/Invoca/statsd/archive/${VERSION}.
     && rm /tmp/statsd.tgz \
     && cd /usr/local/src/statsd \
     && npm install \
+    && cp -v /usr/local/src/statsd/exampleConfig.js /etc/default/config.js \
     && sed -i 's/graphite.example.com/graphite/' /etc/default/config.js
 
 EXPOSE 8125/udp
