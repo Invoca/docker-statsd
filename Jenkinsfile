@@ -1,9 +1,14 @@
 #!/usr/bin/groovy
-@Library('jenkins-pipeline@v0.3.0')
+@Library('jenkins-pipeline@v0.4.5')
 import com.invoca.docker.*;
 
 pipeline {
-  agent { label 'docker' }
+  agent {
+    kubernetes {
+      defaultContainer "docker"
+      yamlFile "./image_build_pod.yml" // This will reference the k8s pod
+    }
+  }
   stages {
     stage('Setup') {
       environment {
